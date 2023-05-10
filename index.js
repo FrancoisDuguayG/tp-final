@@ -7,8 +7,6 @@ const cors = require('cors')
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var studentRouter= require("./routes/students");
-
 
 // connect to mongo Atlas
 const mongoUser = "francoisduguayg";
@@ -56,6 +54,6 @@ app.use(function (err, req, res, next) {
 });
 
 
-app.listen(process.env.PORT || 9000, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log("Running on port 9000");
 });

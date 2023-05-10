@@ -1,7 +1,6 @@
 {
   "name": "tp-finale",
   "version": "0.0.0",
-  "private": true,
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
