@@ -1,7 +1,7 @@
 const express= require('express');
 const mongoose= require('mongoose');
 
-const Student= require('../api/models/studentData.js');
+const Student= require('../models/studentData.js');
 
 const router= express.Router();
 

@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const crypto = require("crypto");
 
-const userData = require("../api/models/userData.js");
+const userData = require("../models/userData.js");
 
 const router = express.Router();
 
