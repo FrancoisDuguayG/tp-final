@@ -35,6 +35,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors(corsOptions))
 
+
+app.get('/', (req, res) => {
+  res.send('Express JS on Vercel')
+})
+
+app.get('/ping', (req, res) => {
+  res.send('pong 🏓')
+})
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
