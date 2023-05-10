@@ -60,5 +60,3 @@ app.use(function (err, req, res, next) {
 app.listen(process.env.PORT || 9000, () => {
   console.log("Running on port 9000");
 });
-
-module.exports = app;
