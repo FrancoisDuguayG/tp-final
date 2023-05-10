@@ -57,8 +57,8 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-
-const port = 9000;
-app.listen(port, () => {
-  console.log("Server started");
-});
+module.exports = app;
+// const port = 9000;
+// app.listen(port, () => {
+//   console.log("Server started");
+// });
