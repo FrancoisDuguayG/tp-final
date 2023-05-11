@@ -5,11 +5,11 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 const cors = require('cors')
 
-var indexRouter = require("./routes/index");
-var loginRouter = require("./routes/login");
-var itemsRouter = require("./routes/items");
-var logoutRouter = require("./routes/logout");
-var favoriteRouter = require("./routes/favorites");
+var indexRouter = require("../routes/index");
+var loginRouter = require("../routes/login");
+var itemsRouter = require("../routes/items");
+var logoutRouter = require("../routes/logout");
+var favoriteRouter = require("../routes/favorites");
 
 // connect to mongo Atlas
 const mongoUser = "francoisduguayg";
