@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
-const studentSchema = mongoose.Schema({
-  fullName: {
+const modelHelpers = require("./modelHelper");
+const userSchema = mongoose.Schema({
+  name: {
     type: String,
     required: true,
   },
-  userName: {
+  email: {
     type: String,
     required: true,
     unique: true,
@@ -15,8 +16,9 @@ const studentSchema = mongoose.Schema({
   },
   token: String,
   expiration: Number,
-  
+  favorites: [Number],
 });
 
-var userData = mongoose.model("userdata", studentSchema);
+userSchema.method('toJSON', modelHelpers.toJSON);
+var userData = mongoose.model("userdata", userSchema);
 module.exports = userData;

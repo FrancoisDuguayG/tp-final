@@ -6,7 +6,10 @@ var cookieParser = require("cookie-parser");
 const cors = require('cors')
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var loginRouter = require("./routes/login");
+var itemsRouter = require("./routes/items");
+var logoutRouter = require("./routes/logout");
+var favoriteRouter = require("./routes/favorites");
 
 // connect to mongo Atlas
 const mongoUser = "francoisduguayg";
@@ -36,16 +39,20 @@ app.use(cookieParser());
 app.use(cors(corsOptions))
 
 
-app.get('/', (req, res) => {
-  res.send('Express JS on Vercel')
-})
-
-app.get('/ping', (req, res) => {
-  res.send('pong 🏓')
-})
-
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/", loginRouter);
+app.use("/items", itemsRouter);
+
+app.use(function(req, res, next) {
+  if (!req.headers.authorization) {
+    return res.status(403).json({ error: 'No credentials sent!' });
+  }
+  next();
+});
+
+app.use("/", logoutRouter);
+app.use("/favorites", favoriteRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -62,7 +69,7 @@ app.use(function (err, req, res, next) {
   res.send();
 });
 
-
-app.listen(process.env.PORT || 8080, () => {
-  console.log("Running on port 9000");
+let PORT = 8080;
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`Running on port ${PORT}`);
 });
