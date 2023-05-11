@@ -69,7 +69,9 @@ app.use(function (err, req, res, next) {
   res.send();
 });
 
-let PORT = 8080;
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`Running on port ${PORT}`);
-});
+// let PORT = 8080;
+// app.listen(process.env.PORT || PORT, () => {
+//   console.log(`Running on port ${PORT}`);
+// });
+
+module.exports = app;
