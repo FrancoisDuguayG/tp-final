@@ -39,9 +39,9 @@ app.use(cookieParser());
 app.use(cors(corsOptions))
 
 
-app.use("/", indexRouter);
+// app.use("/", indexRouter);
 app.use("/", loginRouter);
-app.use("/items", itemsRouter);
+// app.use("/items", itemsRouter);
 
 app.use(function(req, res, next) {
   if (!req.headers.authorization) {
@@ -50,8 +50,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use("/", logoutRouter);
-app.use("/favorites", favoriteRouter);
+// app.use("/", logoutRouter);
+// app.use("/favorites", favoriteRouter);
 
 app.get('/', (req, res) => {
   const path = `/api/item/${v4()}`;
