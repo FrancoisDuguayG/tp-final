@@ -5,15 +5,16 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 const cors = require('cors')
 
-var indexRouter = require("../routes/index");
-var loginRouter = require("../routes/login");
-var itemsRouter = require("../routes/items");
-var logoutRouter = require("../routes/logout");
-var favoriteRouter = require("../routes/favorites");
+var indexRouter = require("./routes/index");
+var loginRouter = require("./routes/login");
+var itemsRouter = require("./routes/items");
+var logoutRouter = require("./routes/logout");
+var favoriteRouter = require("./routes/favorites");
 
 // connect to mongo Atlas
 const mongoUser = "francoisduguayg";
 const mongoPassword = "lCQRFbyTXAsquWcv";
+
 const url =
 "mongodb+srv://francoisduguayg:lCQRFbyTXAsquWcv@cluster0.bgsxhqy.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(url, { useNewUrlParser: true });
@@ -39,9 +40,9 @@ app.use(cookieParser());
 app.use(cors(corsOptions))
 
 
-// app.use("/", indexRouter);
+app.use("/", indexRouter);
 app.use("/", loginRouter);
-// app.use("/items", itemsRouter);
+app.use("/items", itemsRouter);
 
 app.use(function(req, res, next) {
   if (!req.headers.authorization) {
@@ -50,15 +51,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-// app.use("/", logoutRouter);
-// app.use("/favorites", favoriteRouter);
-
-app.get('/', (req, res) => {
-  const path = `/api/item/${v4()}`;
-  res.setHeader('Content-Type', 'text/html');
-  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-  res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
-});
+app.use("/", logoutRouter);
+app.use("/favorites", favoriteRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

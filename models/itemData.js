@@ -3,9 +3,11 @@ const modelHelpers = require("./modelHelper")
 const itemSchema = mongoose.Schema({
   name: String,
   price: Number,
-  images: [String],
+  image: [String],
   position: {
-    adresse: String
+    addresse: String,
+    longitude: Number,
+    latitude: Number
   },
   categorie: String,
   description: String,
